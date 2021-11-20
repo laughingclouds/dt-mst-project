@@ -1,0 +1,9 @@
+__Problem Statement:__ To perform text analasys using pandas, data visualization using matplotlib and natural language processing using the pycaret.nlp module of a given piece of literature.
+
+__Key Features/Benefits:__
+
+__software used:__
+Python 3.9.5, python packages such as PyCaret, Pandas, Matplotlib
+Development Environment:
+    any of these-> visual studio code (ide), google collab, jupyter-lab
+Among other dependencies
