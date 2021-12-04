@@ -11,7 +11,9 @@ So please make sure you have version 3.9.5 (or higher) installed.
 ### Virtual Environment
 
 We don't want our global scope to be polluted so let's set up a virtual environment.
+
 Execute the following in your terminal/powershell/cmd
+
 Windows
 
 ```bash
