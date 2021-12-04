@@ -1,3 +1,4 @@
+"""Python 3.9.5"""
 import cv2
 
 import HandTrackingModule as htm

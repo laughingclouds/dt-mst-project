@@ -18,6 +18,7 @@ import cv2
 #     )
 #     return pTime
 
+
 class HandDetector:
     def __init__(
         self,
@@ -58,7 +59,15 @@ class HandDetector:
                 lmList.append([id, cx, cy])
 
                 if draw:
-                    cv2.putText(img, f"{id}", (cx, cy - 5), cv2.FONT_HERSHEY_PLAIN, 1, (255, 0, 0), 1)
+                    cv2.putText(
+                        img,
+                        f"{id}",
+                        (cx, cy - 5),
+                        cv2.FONT_HERSHEY_PLAIN,
+                        1,
+                        (255, 0, 0),
+                        1,
+                    )
         return lmList
 
 
