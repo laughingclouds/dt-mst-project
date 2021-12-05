@@ -20,6 +20,21 @@ def thumbIncrementCheck(lmList: list[list[int]]) -> int:
     return count
 
 
+def textOutput(count, cc) -> str:
+    """Returns an appropriate text output depending on
+    `count` and `cc`."""
+    text = "NOTHING"
+    if (count, cc) == (2, 2):
+        text = "SCISSOR"
+    elif count == 0:
+        text = "ROCK"
+    elif count == 5:
+        text = "PAPER"
+    else:
+        pass
+    return text
+        
+
 def main():
     cap = cv2.VideoCapture(0)
     detector = htm.HandDetector()
@@ -33,7 +48,7 @@ def main():
         dipIDs = [2, 7, 11, 15, 19]
         count = 0
         cc = 0
-        try:
+        if len(lmlist) != 0:
             for i in range(0, 5):
                 if i == 0:
                     # # for right hand detection of thumb
@@ -48,8 +63,7 @@ def main():
                         cc += 1
                     elif lmlist[tipIDs[i]][2] < lmlist[dipIDs[i]][2]:
                         count += 1
-        except:
-            pass
+        
         if count == 0:
             txt = "STONE"
         elif count == 2 and cc == 2:
@@ -58,6 +72,7 @@ def main():
             txt = "PAPER"
         else:
             txt = "Nothing"
+        # txt = textOutput(count, cc)
 
         cv2.putText(img, str(txt), (10, 140), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)        
 
