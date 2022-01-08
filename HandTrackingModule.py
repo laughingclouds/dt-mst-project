@@ -47,13 +47,18 @@ class HandDetector:
         return img
 
     def findPosition(self, img, handNo=0, draw=True):
+        """Return the complete list of landmarks IF a hand was detected
+        Else return empty list"""
         lmList = []
 
+        # This will check if any hands have been detected
         if self.results.multi_hand_landmarks:
+            # Selects the first hand detected by mediapipe
             myHand = self.results.multi_hand_landmarks[handNo]
 
             for id, lm in enumerate(myHand.landmark):
                 h, w, _ = img.shape
+                # finding coordinates of the landmark on the screen
                 cx, cy = int(lm.x * w), int(lm.y * h)
 
                 lmList.append([id, cx, cy])
@@ -64,9 +69,9 @@ class HandDetector:
                         f"{id}",
                         (cx, cy - 5),
                         cv2.FONT_HERSHEY_PLAIN,
-                        1,
-                        (255, 0, 0),
-                        1,
+                        1, # font scale
+                        (255, 0, 0), # font color in BGR format
+                        1, # font thickness
                     )
         return lmList
 
