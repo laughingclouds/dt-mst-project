@@ -32,7 +32,6 @@ def textOutput(count, cc) -> str:
         pass
     return text
 
-
 def main():
     cap = cv2.VideoCapture(0)   # opens the camera
     detector = htm.HandDetector()
