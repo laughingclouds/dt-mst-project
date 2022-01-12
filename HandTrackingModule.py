@@ -7,18 +7,6 @@ from mediapipe.python.solutions.drawing_utils import draw_landmarks
 import cv2
 
 
-# from time import time
-# def drawFPS(img, pTime: float) -> float:
-#     cTime = time()
-#     fps = int(1 / (cTime - pTime))
-#     pTime = cTime
-
-#     cv2.putText(
-#         img, f"FPS: {fps}", (400, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3
-#     )
-#     return pTime
-
-
 class HandDetector:
     def __init__(
         self,

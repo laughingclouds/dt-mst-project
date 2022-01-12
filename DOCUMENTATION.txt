@@ -1,0 +1,33 @@
+Documentation
+We use two python modules in this project
+    HandTrackingModule.py: Has the user defined class that will recognize the hands
+    of the user and perform other operations on it.
+
+        class HandDetector
+            attributes:
+                hands: represents the "Hands" object created using Hands class from the mediapipe library.
+                It processes an RGB image and returns the hand landmarks of each detected hand.
+            methods: 
+                findHands: function to find hands
+                If a hand is found, it will draw hand landmarks over them and return the edited image.
+
+                findPosition: If a hand is detected it finds the position of the hand landmarks. And returns a nested list of their coordinates.
+
+    main.py: The main script that is run.
+
+    It uses the following functions
+
+        thumbIncrementCheck(lmList: list[list[int]]): Checks whether your thumb is up or not. No matter what hand you use. Returns 1 if thumb is up else 0
+
+        textOutput(count, cc): Returns an appropriate text output depending on `count` and `cc`.
+
+        main(): The function that is evoked when main.py is run.
+
+        1) Access the devices' camera to get images.
+        2) Initialize a HandDetector object called "detector".
+        3) Within an infinite loop
+            1) read image from the camera and feed it into findHands() method of "detector"
+            2) feed the edited image into findPosition() method and get the list of coordinates of the detected hand
+            3) if hand exists, then collect data on what fingers are up or down in variables "count" and "cc"
+            4) detect what hand sign is shown using textOutput() function
+            5) put the name of the detected shape in the image and show it
