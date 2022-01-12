@@ -1,8 +1,6 @@
 """Python 3.9.5"""
 import cv2
-
 import HandTrackingModule as htm
-
 
 def thumbIncrementCheck(lmList: list[list[int]]) -> int:
     """Checks whether your thumb is up or not.
