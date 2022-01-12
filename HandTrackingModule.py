@@ -63,7 +63,7 @@ class HandDetector:
                     )
         return lmList
 
-
+# FOR TESTING
 def main():
     cap = cv2.VideoCapture(0)
 

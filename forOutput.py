@@ -36,13 +36,13 @@ def textOutput(count, cc) -> str:
 
 
 def main():
-    cap = cv2.VideoCapture(0)   # opens the camera
+    # cap = cv2.VideoCapture(0)   # opens the camera
     detector = htm.HandDetector()
 
     while True:
-        success, img = cap.read()
+        success, img = cv2.imread("/home/laughinglouds/Pictures/Webcam/2021-04-13-133250.jpg")
         img = detector.findHands(img)
-        lmlist = detector.findPosition(img, draw=False)
+        lmlist = detector.findPosition(img, draw=True)
 
         # If a hand is not detected value will be 0
         # else non-zero (21)
@@ -81,7 +81,6 @@ def main():
         # os: linux mint 20.1
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
-
 
 if __name__ == "__main__":
     main()
