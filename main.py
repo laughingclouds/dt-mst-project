@@ -1,4 +1,6 @@
 """Python 3.9.5"""
+from time import time
+
 import cv2
 import HandTrackingModule as htm
 
@@ -17,7 +19,6 @@ def thumbIncrementCheck(lmList: list[list[int]]) -> int:
             count += 1
     return count
 
-
 def textOutput(count, cc) -> str:
     """Returns an appropriate text output depending on
     `count` and `cc`."""
@@ -32,9 +33,20 @@ def textOutput(count, cc) -> str:
         pass
     return text
 
+def drawTextInDifferentColors(img, text: str, x = 10, y = 70):
+    """Draws the text output in different colors, depending on
+    the text"""
+    # (x, y) is coordinate of txt on the screen
+    if text == "NOTHING":
+        cv2.putText(img, str(text), (x, y), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
+    else:
+        cv2.putText(img, str(text), (x, y), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 3)
+
+
 def main():
     cap = cv2.VideoCapture(0)   # opens the camera
     detector = htm.HandDetector()
+    pTime = time()
 
     while True:
         success, img = cap.read()
@@ -70,8 +82,10 @@ def main():
 
         txt = textOutput(count, cc)
 
-        # (10, 140) is coordinate of txt on the screen
-        cv2.putText(img, str(txt), (10, 140), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
+        # Drawing Frames per second on the screen
+        pTime = htm.drawFPS(img, pTime)
+        
+        drawTextInDifferentColors(img, txt)
         
         cv2.imshow("Image", img)
         # close key isn't working for me

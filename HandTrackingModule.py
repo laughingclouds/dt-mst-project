@@ -1,3 +1,5 @@
+from time import time
+
 from mediapipe.python.solutions.hands import (
     Hands as _genHandsCLS,
     HAND_CONNECTIONS,
@@ -6,6 +8,17 @@ from mediapipe.python.solutions.hands import (
 from mediapipe.python.solutions.drawing_utils import draw_landmarks
 import cv2
 
+
+def drawFPS(img, pTime: float) -> float:
+    cTime = time()
+    fps = int(1 / (cTime - pTime))
+    pTime = cTime
+
+
+    cv2.putText(
+        img, f"FPS: {fps}", (10, 450), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3
+    )
+    return pTime
 
 class HandDetector:
     def __init__(
