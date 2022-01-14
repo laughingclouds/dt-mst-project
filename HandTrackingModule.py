@@ -14,9 +14,9 @@ def drawFPS(img, pTime: float) -> float:
     fps = int(1 / (cTime - pTime))
     pTime = cTime
 
-
     cv2.putText(
-        img, f"FPS: {fps}", (10, 450), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3
+        img, text=f"FPS: {fps}", org=(10, 450), fontFace=cv2.FONT_HERSHEY_PLAIN, fontScale=3,
+        color=(255, 0, 0), thickness=3
     )
     return pTime
 

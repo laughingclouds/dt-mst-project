@@ -37,10 +37,17 @@ def drawTextInDifferentColors(img, text: str, x = 10, y = 70):
     """Draws the text output in different colors, depending on
     the text"""
     # (x, y) is coordinate of txt on the screen
+    def drawColor(bgrColor: tuple[int]):
+        cv2.putText(
+            img, str(text), org=(x, y), fontFace=cv2.FONT_HERSHEY_PLAIN,
+            fontScale=3, color=bgrColor, thickness=3
+        )
     if text == "NOTHING":
-        cv2.putText(img, str(text), (x, y), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
+        # text in red color
+        drawColor((0, 0, 255))
     else:
-        cv2.putText(img, str(text), (x, y), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 3)
+        # text in green color
+        drawColor((0, 255, 0))
 
 
 def main():
