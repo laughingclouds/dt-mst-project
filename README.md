@@ -52,3 +52,8 @@ Linux
 
 ```bash
 pip install -r requirements.txt
+
+## TODO
+
+[] Create an "setup" script
+[] Create an "installation" option (python packaging)
